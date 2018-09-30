@@ -10,3 +10,12 @@ To execute this project, please follow the below guidlines
 3: ProcessFile class is invoked in run_code that creates csv files of images and masks with user define pixel values like 128, 256 etc.
 
 4: Processed image csv and mask csv files are used in main code to build model 
+
+# references
+https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/
+
+https://github.com/zhixuhao/unet
+
+https://arxiv.org/pdf/1602.06564v1.pdf
+
+http://cs229.stanford.edu/proj2017/final-reports/5243715.pdf
