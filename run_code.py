@@ -28,8 +28,8 @@ pfile = ProcessFile(loc_image, loc_poly, 1280)
 processed_image_df, mask_df = pfile.get_custom_image_mask(size=[128, 128])
 
 # save file to some location for feeding in neural network
-processed_image_df.to_csv('./data/train/mask_file.csv', index=False)
-mask_df.to_csv('./data/train/train_file.csv', index=False)
+processed_image_df.to_csv('./data/processed_data/mask_file.csv', index=False)
+mask_df.to_csv('./data/processed_data/train_file.csv', index=False)
 
 #############################################################
 
