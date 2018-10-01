@@ -19,3 +19,6 @@ https://github.com/zhixuhao/unet
 https://arxiv.org/pdf/1602.06564v1.pdf
 
 http://cs229.stanford.edu/proj2017/final-reports/5243715.pdf
+
+# output 
+![Sample Output](https://github.com/statisticalplumber/Building_detection/blob/master/sample_output.PNG)
