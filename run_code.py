@@ -77,3 +77,27 @@ plt.title('pridicted mask View after setting threshold mean at 128 pixel size')
 plt.show()
 
 
+# method to predict mask of new image
+image_path = 'image_sample.png'
+
+def predict_image_mask(image_path, size):
+    img_obj = image.load_img(image_path, grayscale=True).resize(size=[size]*2)
+    arr_obj = image.img_to_array(img_obj)
+    arr_obj = pd.np.expand_dims(arr_obj, axis=0)
+    new_res = model.predict(arr_obj)
+    return arr_obj.reshape([size]*2), new_res.reshape([size]*2)
+ 
+out = predict_image_mask(image_path, 128)
+%matplotlib
+plt.figure(figsize=(1,3))
+plt.subplot(1,3,1)
+plt.imshow(out[0])
+plt.title('Image View at 128 pixel size')
+plt.subplot(1,3,2)
+plt.imshow(out[1])
+plt.title('pridicted mask View at 128 pixel size')
+plt.subplot(1,3,3)
+plt.imshow(out[1]>out[1].mean()*1.02)
+plt.title('pridicted mask View after setting threshold mean at 128 pixel size')
+plt.show()
+
