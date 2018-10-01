@@ -48,21 +48,32 @@ x_train, x_test, y_train, y_test = train_test_split(image_array, mask_array, tes
 row_size = 128
 col_size = 128
 
+# calling unet model class
 unet = UnetModel(row_size, col_size, 1)
 
 model = unet.small_unet()
 model_checkpoint = ModelCheckpoint('unet_bd.hdf5', monitor='loss',verbose=1, save_best_only=True)
+# training the model
 model.fit(x_train, y_train,  batch_size=64, nb_epoch=10, verbose=1, shuffle=True,
 validation_split=0.2, callbacks=[model_checkpoint])
 
+# predicting on test set 
 res = model.predict(x_test)
 
-xx = res[1,:].reshape([128,128])
 
+# simplot to view output
+%matplotlib
 i=2
+plt.figure(figsize=(1,3))
+plt.subplot(1,3,1)
 plt.imshow((x_test[i,:]).reshape([128,128]))
+plt.title('Image View at 128 pixel size')
+plt.subplot(1,3,2)
 plt.imshow((res[i,:]).reshape([128,128]))
+plt.title('pridicted mask View at 128 pixel size')
+plt.subplot(1,3,3)
 plt.imshow(res[i,:].reshape([128,128])>res[i,:].reshape([128,128]).mean())
-
+plt.title('pridicted mask View after setting threshold mean at 128 pixel size')
+plt.show()
 
 
